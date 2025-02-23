@@ -1,0 +1,53 @@
+package com.github.dannil.productmanagement.model.database;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+
+@Entity
+public class ProductColor {
+
+    public enum Color {
+        BLUE, RUBY
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private Color color;
+
+    @ManyToMany(mappedBy = "colors")
+    private Set<Product> products;
+
+    public ProductColor() {
+        this.products = new HashSet<>();
+    }
+
+    public ProductColor(ProductColor.Color color, Set<Product> products) {
+        this();
+        this.color = color;
+        this.products = products;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+}
