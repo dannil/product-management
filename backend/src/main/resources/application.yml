@@ -1,0 +1,3 @@
+spring:
+  application.name: productmanagement
+server.servlet.context-path: /api
