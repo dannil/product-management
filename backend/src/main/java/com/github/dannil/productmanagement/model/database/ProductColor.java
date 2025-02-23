@@ -3,6 +3,9 @@ package com.github.dannil.productmanagement.model.database;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.github.dannil.productmanagement.model.dto.ProductColorDto;
+import com.github.dannil.productmanagement.view.View;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,7 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 
 @Entity
-public class ProductColor {
+public class ProductColor implements View<ProductColorDto> {
 
     public enum Color {
         BLUE, RUBY
@@ -48,6 +51,17 @@ public class ProductColor {
 
     public void addProduct(Product product) {
         products.add(product);
+    }
+
+    @Override
+    public ProductColorDto toNormalView() {
+        return new ProductColorDto(id, color.toString().toLowerCase());
+    }
+
+    @Override
+    public ProductColorDto toFlatView() {
+        // No fields can be recursive; return the normal view
+        return toNormalView();
     }
 
 }
