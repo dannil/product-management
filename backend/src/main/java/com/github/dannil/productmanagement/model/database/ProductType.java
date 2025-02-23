@@ -2,6 +2,9 @@ package com.github.dannil.productmanagement.model.database;
 
 import java.util.Objects;
 
+import com.github.dannil.productmanagement.model.dto.ProductTypeDto;
+import com.github.dannil.productmanagement.view.View;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -10,7 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class ProductType {
+public class ProductType implements View<ProductTypeDto> {
 
     public enum Type {
         SOFA, CHAIR, TABLE
@@ -34,6 +37,17 @@ public class ProductType {
 
     public ProductType.Type getType() {
         return type;
+    }
+
+    @Override
+    public ProductTypeDto toNormalView() {
+        return new ProductTypeDto(id, type.toString().toLowerCase());
+    }
+
+    @Override
+    public ProductTypeDto toFlatView() {
+        // No fields can be recursive; return the normal view
+        return toNormalView();
     }
 
     @Override
