@@ -1,6 +1,6 @@
 import './MainLayout.css';
 import { Outlet } from 'react-router';
-import Menu from '../components/Menu2';
+import Menu from '../components/Menu';
 
 const MainLayout = () => {
   return (

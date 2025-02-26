@@ -1,0 +1,29 @@
+.product-listing {
+    display: flex;
+    flex-direction: column;
+    min-width: 600px;
+}
+
+.list-header {
+    background-color: #242424;
+}
+
+.list-header,
+.list-row {
+    display: flex;
+}
+
+.list-cell {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid;
+    text-align: center;
+}
+
+.list-row:hover {
+    background-color: #2b2b2b;
+}
+
+.flex-3 {
+    flex: 3;
+}

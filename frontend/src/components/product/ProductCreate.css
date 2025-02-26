@@ -1,0 +1,17 @@
+.form label, .form select {
+    width: 100px;
+}
+
+.form-row {
+    display: flex;
+}
+
+.error {
+    text-align: center;
+    background-color: red;
+}
+
+.form-row,
+.error {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,18 @@
+ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+li {
+    flex: 1;
+    background: #242424;
+    text-align: center;
+    padding: 10px;
+}
+
+li:hover {
+    background-color: #414141;
+}
