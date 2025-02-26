@@ -6,8 +6,8 @@ insert_final_newline = true
 indent_style = space
 trim_trailing_whitespace = true
 
-[*.{js,ts,yml}]
+[*.{js,jsx,ts,tsx,yml}]
 indent_size = 2
 
-[*.{java}]
+[*.{css,java}]
 indent_size = 4

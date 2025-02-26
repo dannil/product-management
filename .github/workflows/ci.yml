@@ -27,3 +27,22 @@ jobs:
       run: mvn dependency:go-offline
     - name: Build with Maven
       run: mvn install -V
+  frontend:
+    name: Frontend
+    defaults:
+      run:
+        working-directory: ./frontend
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - name: Install dependencies
+      run: npm run ci
+    - name: Lint
+      run: npm run lint
+    - name: Build
+      run: npm run build
