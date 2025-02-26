@@ -11,7 +11,6 @@ import com.github.dannil.productmanagement.model.dto.ProductDto;
 import com.github.dannil.productmanagement.service.ProductService;
 import com.github.dannil.productmanagement.view.ViewType;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
