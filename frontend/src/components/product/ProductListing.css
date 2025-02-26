@@ -1,0 +1,7 @@
+.product-listing {
+    display: flex;
+}
+
+.product-listing table {
+    table-layout: fixed;
+}
