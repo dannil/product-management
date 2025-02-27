@@ -29,7 +29,7 @@ public class ProductService {
     }
 
     public List<Product> findAll() {
-        return this.productRepository.findAll();
+        return productRepository.findAllByOrderByCreatedDesc();
     }
 
     public Optional<Product> findById(Long id) {
