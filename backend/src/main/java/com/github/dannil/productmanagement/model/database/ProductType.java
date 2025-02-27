@@ -61,7 +61,7 @@ public class ProductType implements View<ProductTypeDto> {
 
     @Override
     public int hashCode() {
-        return 37 * type.hashCode();
+        return Objects.hash(type);
     }
 
 }

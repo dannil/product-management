@@ -76,7 +76,7 @@ public class ProductColor implements View<ProductColorDto> {
 
     @Override
     public int hashCode() {
-        return 37 * color.hashCode();
+        return Objects.hash(color);
     }
 
 }

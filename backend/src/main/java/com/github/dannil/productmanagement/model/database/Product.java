@@ -100,7 +100,7 @@ public class Product implements View<ProductDto> {
 
     @Override
     public int hashCode() {
-        return 37 * name.hashCode() * created.hashCode() * type.hashCode();
+        return Objects.hash(name, created, type);
     }
 
 }
