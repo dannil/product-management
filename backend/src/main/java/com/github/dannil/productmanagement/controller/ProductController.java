@@ -13,6 +13,7 @@ import com.github.dannil.productmanagement.view.ViewType;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.http.ResponseEntity;
 
@@ -29,10 +30,10 @@ public class ProductController {
     @GetMapping(produces = "application/json")
     public ResponseEntity<List<ProductDto>> getAll(@RequestParam(required = false) String viewType) {
         ViewType viewTypeEnum = ViewType.ofWithFallback(viewType, ViewType.NORMAL);
-        List<Product> products = this.productService.findAll();
+        Stream<Product> products = productService.findAll().stream();
         List<ProductDto> dtos = switch (viewTypeEnum) {
-            case ViewType.NORMAL -> products.stream().map(Product::toNormalView).toList();
-            case ViewType.FLAT -> products.stream().map(Product::toFlatView).toList();
+            case ViewType.NORMAL -> products.map(Product::toNormalView).toList();
+            case ViewType.FLAT -> products.map(Product::toFlatView).toList();
         };
         return ResponseEntity.ok(dtos);
     }
