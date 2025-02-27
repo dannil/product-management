@@ -33,14 +33,20 @@ public class ProductService {
     }
 
     public Optional<Product> findById(Long id) {
-        return this.productRepository.findById(id);
+        return productRepository.findById(id);
     }
 
-    public Product add(AddProductDto product) {
-        Optional<ProductType> dbType = productTypeRepository.findById(product.getType());
-        Optional<ProductColor> dbColor = productColorRepository.findById(product.getColor());
-        Product dbProduct = new Product(product.getName(), dbType.get(), Set.of(dbColor.get()));
-        return productRepository.save(dbProduct);
+    public Product add(AddProductDto dto) {
+        Optional<ProductType> dbType = productTypeRepository.findById(dto.getType());
+        if (!dbType.isPresent()) {
+            throw new IllegalArgumentException(dto.getType() + " is not a valid product type");
+        }
+        Optional<ProductColor> dbColor = productColorRepository.findById(dto.getColor());
+        if (!dbColor.isPresent()) {
+            throw new IllegalArgumentException(dto.getColor() + " is not a valid product color");
+        }
+        Product product = new Product(dto.getName(), dbType.get(), Set.of(dbColor.get()));
+        return productRepository.save(product);
     }
 
 }
