@@ -82,10 +82,7 @@ public class Product implements View<ProductDto> {
 
     @Override
     public ProductDto toFlatView() {
-        ProductDto dto = toNormalView();
-        dto.setColors(null);
-        dto.setType(null);
-        return dto;
+        return new ProductDto(id, name, null, null);
     }
 
     @Override
